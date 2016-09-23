@@ -59,7 +59,26 @@ namespace OnlineBanking
 
         }
 
-        private void enableButtons(object sender, EventArgs e)
+        // Controller functions
+        private void hidePanels()
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control is Panel)
+                {
+                    control.Visible = false;
+                }
+            }
+        }
+        private void showClientsAccounts()
+        {
+            lboxAccounts.Items.Clear();
+            foreach (Account account in ((Client)lboxClients.SelectedItem).accounts)
+            {
+                lboxAccounts.Items.Add(account);
+            }
+        }
+        private void enableButtons()
         {
             hidePanels();
             if (cboxUserType.SelectedIndex != -1 && lboxClients.SelectedIndex != -1)
@@ -100,27 +119,6 @@ namespace OnlineBanking
                     break;
             }
         }
-
-        private void hidePanels()
-        {
-            foreach (Control control in this.Controls)
-            {
-                if (control is Panel)
-                {
-                    control.Visible = false;
-                }
-            }
-        }
-
-        private void showClientsAccounts(object sender, EventArgs e)
-        {
-            lboxAccounts.Items.Clear();
-            foreach (Account account in ((Client)lboxClients.SelectedItem).accounts)
-            {
-                lboxAccounts.Items.Add(account);
-            }
-        }
-
         private void disableButtons()
         {
             foreach (Control control in this.Controls)
@@ -132,34 +130,58 @@ namespace OnlineBanking
             }
         }
 
+        // Show panel button clicked
         private void btnShowPanelOpen_Click(object sender, EventArgs e)
         {
             hidePanels();
             pnlOpen.Visible = true;
         }
-
         private void btnShowPanelDeposit_Click(object sender, EventArgs e)
         {
             hidePanels();
             pnlDeposit.Visible = true;
         }
-
         private void btnShowPanelWithdraw_Click(object sender, EventArgs e)
         {
             hidePanels();
             pnlWithdraw.Visible = true;
         }
-
         private void btnShowPanelBalance_Click(object sender, EventArgs e)
         {
             hidePanels();
             pnlBalance.Visible = true;
         }
-
         private void btnShowPanelTransactions_Click(object sender, EventArgs e)
         {
             hidePanels();
             pnlTransactions.Visible = true;
+        }
+
+        // User type selected
+        private void cboxUserType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Enable the buttons based on conditions
+            disableButtons();
+            enableButtons();
+        }
+
+        // Client selected
+        private void lboxClients_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Show accounts belonging to selected client
+            showClientsAccounts();
+
+            // Enable the buttons based on conditions
+            disableButtons();
+            enableButtons();
+        }
+
+        // Account selected
+        private void lboxAccounts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Enable the buttons based on conditions
+            disableButtons();
+            enableButtons();
         }
     }
 }
