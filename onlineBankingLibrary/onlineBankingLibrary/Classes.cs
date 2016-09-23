@@ -12,9 +12,9 @@ namespace onlineBankingLibrary
         public string lastName { get; set; }
         public string fullName { get { return string.Format("{0} {1}", firstName, lastName); } }
         public List<Account> accounts = new List<Account>();
-        public void addAccount(Account newAccount)
+        public void addAccount(Account account)
         {
-            accounts.Add(newAccount);
+            accounts.Add(account);
         }
     }
 
