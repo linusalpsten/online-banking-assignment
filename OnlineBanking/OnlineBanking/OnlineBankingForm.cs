@@ -56,7 +56,7 @@ namespace OnlineBanking
             hidePanels();
 
             // Disable buttons
-            disableButtons();
+            disableAllButtons();
 
         }
 
@@ -120,7 +120,7 @@ namespace OnlineBanking
                     break;
             }
         }
-        private void disableButtons()
+        private void disableAllButtons()
         {
             foreach (Control control in this.Controls)
             {
@@ -129,6 +129,11 @@ namespace OnlineBanking
                     control.Enabled = false;
                 }
             }
+        }
+        private bool getIsNumberInTextbox(TextBox tbox)
+        {
+            int num;
+            return int.TryParse(tbox.Text, out num);
         }
 
         // Show panel button clicked
@@ -161,28 +166,71 @@ namespace OnlineBanking
         // User type selected
         private void cboxUserType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //
+            hidePanels();
+
             // Enable the buttons based on conditions
-            disableButtons();
+            disableAllButtons();
             enableButtons();
         }
 
         // Client selected
         private void lboxClients_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //
+            hidePanels();
+
             // Show accounts belonging to selected client
             showClientsAccounts();
 
             // Enable the buttons based on conditions
-            disableButtons();
+            disableAllButtons();
             enableButtons();
         }
 
         // Account selected
         private void lboxAccounts_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //
+            hidePanels();
+
             // Enable the buttons based on conditions
-            disableButtons();
+            disableAllButtons();
             enableButtons();
+        }
+
+        // Deposit
+        private void btnDeposit_Click(object sender, EventArgs e)
+        {
+            // Textbox content must be a number
+            bool isNumInTextbox = getIsNumberInTextbox(tboxDepositAmount);
+            if (!isNumInTextbox)
+            {
+                return;
+            }
+
+            // Variables
+            int amount;
+            Account account;
+
+            // Get deposited amount
+            amount = int.Parse(tboxDepositAmount.Text);
+
+            // Amount must be a positive number
+            if (amount <= 0)
+            {
+                return;
+            }
+
+            // Reference to current account
+            account = (Account)lboxAccounts.SelectedItem;
+
+
+            // Add the deposit to the account balance
+            account.balance += amount;
+            // Add account transaction
+            account.transactions.Add(new Transaction(amount));
+
         }
     }
 }
