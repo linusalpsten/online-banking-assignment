@@ -39,26 +39,26 @@
             this.lblAccountList = new System.Windows.Forms.Label();
             this.lboxAccounts = new System.Windows.Forms.ListBox();
             this.pnlOpen = new System.Windows.Forms.Panel();
-            this.pnlDeposit = new System.Windows.Forms.Panel();
-            this.pnlWithdraw = new System.Windows.Forms.Panel();
-            this.pnlBalance = new System.Windows.Forms.Panel();
-            this.pnlTransactions = new System.Windows.Forms.Panel();
-            this.lblUserType = new System.Windows.Forms.Label();
-            this.btnOpen = new System.Windows.Forms.Button();
-            this.tboxOpenBalance = new System.Windows.Forms.TextBox();
             this.lblOpenBalance = new System.Windows.Forms.Label();
-            this.tboxDepositAmount = new System.Windows.Forms.TextBox();
-            this.lblDepositAmount = new System.Windows.Forms.Label();
+            this.tboxOpenBalance = new System.Windows.Forms.TextBox();
+            this.btnOpen = new System.Windows.Forms.Button();
+            this.pnlDeposit = new System.Windows.Forms.Panel();
+            this.lblDeposit = new System.Windows.Forms.Label();
             this.btnDeposit = new System.Windows.Forms.Button();
+            this.lblDepositAmount = new System.Windows.Forms.Label();
+            this.tboxDepositAmount = new System.Windows.Forms.TextBox();
+            this.pnlWithdraw = new System.Windows.Forms.Panel();
+            this.lblWithdraw = new System.Windows.Forms.Label();
             this.btnWithdraw = new System.Windows.Forms.Button();
             this.lblWithdrawAmount = new System.Windows.Forms.Label();
             this.tboxWithdrawAmount = new System.Windows.Forms.TextBox();
-            this.lblDeposit = new System.Windows.Forms.Label();
-            this.lblWithdraw = new System.Windows.Forms.Label();
-            this.lblTransactions = new System.Windows.Forms.Label();
-            this.lblBalance = new System.Windows.Forms.Label();
+            this.pnlBalance = new System.Windows.Forms.Panel();
             this.lblBalanceNum = new System.Windows.Forms.Label();
+            this.lblBalance = new System.Windows.Forms.Label();
+            this.pnlTransactions = new System.Windows.Forms.Panel();
             this.lboxTransactions = new System.Windows.Forms.ListBox();
+            this.lblTransactions = new System.Windows.Forms.Label();
+            this.lblUserType = new System.Windows.Forms.Label();
             this.pnlOpen.SuspendLayout();
             this.pnlDeposit.SuspendLayout();
             this.pnlWithdraw.SuspendLayout();
@@ -82,6 +82,7 @@
             this.btnShowPanelOpen.TabIndex = 1;
             this.btnShowPanelOpen.Text = "Open Account";
             this.btnShowPanelOpen.UseVisualStyleBackColor = true;
+            this.btnShowPanelOpen.Click += new System.EventHandler(this.btnShowPanelOpen_Click);
             // 
             // btnShowPanelDeposit
             // 
@@ -91,6 +92,7 @@
             this.btnShowPanelDeposit.TabIndex = 2;
             this.btnShowPanelDeposit.Text = "Deposit";
             this.btnShowPanelDeposit.UseVisualStyleBackColor = true;
+            this.btnShowPanelDeposit.Click += new System.EventHandler(this.btnShowPanelDeposit_Click);
             // 
             // btnShowPanelWithdraw
             // 
@@ -100,6 +102,7 @@
             this.btnShowPanelWithdraw.TabIndex = 3;
             this.btnShowPanelWithdraw.Text = "Withdraw";
             this.btnShowPanelWithdraw.UseVisualStyleBackColor = true;
+            this.btnShowPanelWithdraw.Click += new System.EventHandler(this.btnShowPanelWithdraw_Click);
             // 
             // btnShowPanelBalance
             // 
@@ -109,6 +112,7 @@
             this.btnShowPanelBalance.TabIndex = 4;
             this.btnShowPanelBalance.Text = "Balance";
             this.btnShowPanelBalance.UseVisualStyleBackColor = true;
+            this.btnShowPanelBalance.Click += new System.EventHandler(this.btnShowPanelBalance_Click);
             // 
             // btnShowPanelTransactions
             // 
@@ -118,6 +122,7 @@
             this.btnShowPanelTransactions.TabIndex = 5;
             this.btnShowPanelTransactions.Text = "Transactions";
             this.btnShowPanelTransactions.UseVisualStyleBackColor = true;
+            this.btnShowPanelTransactions.Click += new System.EventHandler(this.btnShowPanelTransactions_Click);
             // 
             // lblClientList
             // 
@@ -163,6 +168,32 @@
             this.pnlOpen.Size = new System.Drawing.Size(610, 304);
             this.pnlOpen.TabIndex = 10;
             // 
+            // lblOpenBalance
+            // 
+            this.lblOpenBalance.AutoSize = true;
+            this.lblOpenBalance.Location = new System.Drawing.Point(211, 107);
+            this.lblOpenBalance.Name = "lblOpenBalance";
+            this.lblOpenBalance.Size = new System.Drawing.Size(46, 13);
+            this.lblOpenBalance.TabIndex = 2;
+            this.lblOpenBalance.Text = "Balance";
+            // 
+            // tboxOpenBalance
+            // 
+            this.tboxOpenBalance.Location = new System.Drawing.Point(281, 104);
+            this.tboxOpenBalance.Name = "tboxOpenBalance";
+            this.tboxOpenBalance.Size = new System.Drawing.Size(100, 20);
+            this.tboxOpenBalance.TabIndex = 1;
+            this.tboxOpenBalance.Text = "1000";
+            // 
+            // btnOpen
+            // 
+            this.btnOpen.Location = new System.Drawing.Point(214, 166);
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.Size = new System.Drawing.Size(167, 44);
+            this.btnOpen.TabIndex = 0;
+            this.btnOpen.Text = "Open Account";
+            this.btnOpen.UseVisualStyleBackColor = true;
+            // 
             // pnlDeposit
             // 
             this.pnlDeposit.Controls.Add(this.lblDeposit);
@@ -173,6 +204,42 @@
             this.pnlDeposit.Name = "pnlDeposit";
             this.pnlDeposit.Size = new System.Drawing.Size(610, 304);
             this.pnlDeposit.TabIndex = 11;
+            // 
+            // lblDeposit
+            // 
+            this.lblDeposit.AutoSize = true;
+            this.lblDeposit.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeposit.Location = new System.Drawing.Point(245, 49);
+            this.lblDeposit.Name = "lblDeposit";
+            this.lblDeposit.Size = new System.Drawing.Size(86, 26);
+            this.lblDeposit.TabIndex = 3;
+            this.lblDeposit.Text = "Deposit";
+            this.lblDeposit.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btnDeposit
+            // 
+            this.btnDeposit.Location = new System.Drawing.Point(212, 150);
+            this.btnDeposit.Name = "btnDeposit";
+            this.btnDeposit.Size = new System.Drawing.Size(160, 48);
+            this.btnDeposit.TabIndex = 2;
+            this.btnDeposit.Text = "Deposit";
+            this.btnDeposit.UseVisualStyleBackColor = true;
+            // 
+            // lblDepositAmount
+            // 
+            this.lblDepositAmount.AutoSize = true;
+            this.lblDepositAmount.Location = new System.Drawing.Point(209, 115);
+            this.lblDepositAmount.Name = "lblDepositAmount";
+            this.lblDepositAmount.Size = new System.Drawing.Size(43, 13);
+            this.lblDepositAmount.TabIndex = 1;
+            this.lblDepositAmount.Text = "Amount";
+            // 
+            // tboxDepositAmount
+            // 
+            this.tboxDepositAmount.Location = new System.Drawing.Point(272, 112);
+            this.tboxDepositAmount.Name = "tboxDepositAmount";
+            this.tboxDepositAmount.Size = new System.Drawing.Size(100, 20);
+            this.tboxDepositAmount.TabIndex = 0;
             // 
             // pnlWithdraw
             // 
@@ -185,83 +252,16 @@
             this.pnlWithdraw.Size = new System.Drawing.Size(610, 304);
             this.pnlWithdraw.TabIndex = 12;
             // 
-            // pnlBalance
+            // lblWithdraw
             // 
-            this.pnlBalance.Controls.Add(this.lblBalanceNum);
-            this.pnlBalance.Controls.Add(this.lblBalance);
-            this.pnlBalance.Location = new System.Drawing.Point(50, 708);
-            this.pnlBalance.Name = "pnlBalance";
-            this.pnlBalance.Size = new System.Drawing.Size(610, 304);
-            this.pnlBalance.TabIndex = 13;
-            // 
-            // pnlTransactions
-            // 
-            this.pnlTransactions.Controls.Add(this.lboxTransactions);
-            this.pnlTransactions.Controls.Add(this.lblTransactions);
-            this.pnlTransactions.Location = new System.Drawing.Point(666, 708);
-            this.pnlTransactions.Name = "pnlTransactions";
-            this.pnlTransactions.Size = new System.Drawing.Size(610, 304);
-            this.pnlTransactions.TabIndex = 14;
-            // 
-            // lblUserType
-            // 
-            this.lblUserType.AutoSize = true;
-            this.lblUserType.Location = new System.Drawing.Point(410, 25);
-            this.lblUserType.Name = "lblUserType";
-            this.lblUserType.Size = new System.Drawing.Size(89, 13);
-            this.lblUserType.TabIndex = 15;
-            this.lblUserType.Text = "Choose user type";
-            // 
-            // btnOpen
-            // 
-            this.btnOpen.Location = new System.Drawing.Point(214, 166);
-            this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(167, 44);
-            this.btnOpen.TabIndex = 0;
-            this.btnOpen.Text = "Open Account";
-            this.btnOpen.UseVisualStyleBackColor = true;
-            // 
-            // tboxOpenBalance
-            // 
-            this.tboxOpenBalance.Location = new System.Drawing.Point(281, 104);
-            this.tboxOpenBalance.Name = "tboxOpenBalance";
-            this.tboxOpenBalance.Size = new System.Drawing.Size(100, 20);
-            this.tboxOpenBalance.TabIndex = 1;
-            this.tboxOpenBalance.Text = "1000";
-            // 
-            // lblOpenBalance
-            // 
-            this.lblOpenBalance.AutoSize = true;
-            this.lblOpenBalance.Location = new System.Drawing.Point(211, 107);
-            this.lblOpenBalance.Name = "lblOpenBalance";
-            this.lblOpenBalance.Size = new System.Drawing.Size(46, 13);
-            this.lblOpenBalance.TabIndex = 2;
-            this.lblOpenBalance.Text = "Balance";
-            // 
-            // tboxDepositAmount
-            // 
-            this.tboxDepositAmount.Location = new System.Drawing.Point(272, 112);
-            this.tboxDepositAmount.Name = "tboxDepositAmount";
-            this.tboxDepositAmount.Size = new System.Drawing.Size(100, 20);
-            this.tboxDepositAmount.TabIndex = 0;
-            // 
-            // lblDepositAmount
-            // 
-            this.lblDepositAmount.AutoSize = true;
-            this.lblDepositAmount.Location = new System.Drawing.Point(209, 115);
-            this.lblDepositAmount.Name = "lblDepositAmount";
-            this.lblDepositAmount.Size = new System.Drawing.Size(43, 13);
-            this.lblDepositAmount.TabIndex = 1;
-            this.lblDepositAmount.Text = "Amount";
-            // 
-            // btnDeposit
-            // 
-            this.btnDeposit.Location = new System.Drawing.Point(212, 150);
-            this.btnDeposit.Name = "btnDeposit";
-            this.btnDeposit.Size = new System.Drawing.Size(160, 48);
-            this.btnDeposit.TabIndex = 2;
-            this.btnDeposit.Text = "Deposit";
-            this.btnDeposit.UseVisualStyleBackColor = true;
+            this.lblWithdraw.AutoSize = true;
+            this.lblWithdraw.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWithdraw.Location = new System.Drawing.Point(245, 49);
+            this.lblWithdraw.Name = "lblWithdraw";
+            this.lblWithdraw.Size = new System.Drawing.Size(103, 26);
+            this.lblWithdraw.TabIndex = 4;
+            this.lblWithdraw.Text = "Withdraw";
+            this.lblWithdraw.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btnWithdraw
             // 
@@ -288,38 +288,23 @@
             this.tboxWithdrawAmount.Size = new System.Drawing.Size(100, 20);
             this.tboxWithdrawAmount.TabIndex = 3;
             // 
-            // lblDeposit
+            // pnlBalance
             // 
-            this.lblDeposit.AutoSize = true;
-            this.lblDeposit.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeposit.Location = new System.Drawing.Point(245, 49);
-            this.lblDeposit.Name = "lblDeposit";
-            this.lblDeposit.Size = new System.Drawing.Size(86, 26);
-            this.lblDeposit.TabIndex = 3;
-            this.lblDeposit.Text = "Deposit";
-            this.lblDeposit.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.pnlBalance.Controls.Add(this.lblBalanceNum);
+            this.pnlBalance.Controls.Add(this.lblBalance);
+            this.pnlBalance.Location = new System.Drawing.Point(50, 708);
+            this.pnlBalance.Name = "pnlBalance";
+            this.pnlBalance.Size = new System.Drawing.Size(610, 304);
+            this.pnlBalance.TabIndex = 13;
             // 
-            // lblWithdraw
+            // lblBalanceNum
             // 
-            this.lblWithdraw.AutoSize = true;
-            this.lblWithdraw.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWithdraw.Location = new System.Drawing.Point(245, 49);
-            this.lblWithdraw.Name = "lblWithdraw";
-            this.lblWithdraw.Size = new System.Drawing.Size(103, 26);
-            this.lblWithdraw.TabIndex = 4;
-            this.lblWithdraw.Text = "Withdraw";
-            this.lblWithdraw.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblTransactions
-            // 
-            this.lblTransactions.AutoSize = true;
-            this.lblTransactions.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTransactions.Location = new System.Drawing.Point(234, 34);
-            this.lblTransactions.Name = "lblTransactions";
-            this.lblTransactions.Size = new System.Drawing.Size(135, 26);
-            this.lblTransactions.TabIndex = 6;
-            this.lblTransactions.Text = "Transactions";
-            this.lblTransactions.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblBalanceNum.AutoSize = true;
+            this.lblBalanceNum.Location = new System.Drawing.Point(259, 86);
+            this.lblBalanceNum.Name = "lblBalanceNum";
+            this.lblBalanceNum.Size = new System.Drawing.Size(54, 13);
+            this.lblBalanceNum.TabIndex = 8;
+            this.lblBalanceNum.Text = "balance $";
             // 
             // lblBalance
             // 
@@ -332,14 +317,14 @@
             this.lblBalance.Text = "Balance";
             this.lblBalance.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // lblBalanceNum
+            // pnlTransactions
             // 
-            this.lblBalanceNum.AutoSize = true;
-            this.lblBalanceNum.Location = new System.Drawing.Point(259, 86);
-            this.lblBalanceNum.Name = "lblBalanceNum";
-            this.lblBalanceNum.Size = new System.Drawing.Size(54, 13);
-            this.lblBalanceNum.TabIndex = 8;
-            this.lblBalanceNum.Text = "balance $";
+            this.pnlTransactions.Controls.Add(this.lboxTransactions);
+            this.pnlTransactions.Controls.Add(this.lblTransactions);
+            this.pnlTransactions.Location = new System.Drawing.Point(666, 708);
+            this.pnlTransactions.Name = "pnlTransactions";
+            this.pnlTransactions.Size = new System.Drawing.Size(610, 304);
+            this.pnlTransactions.TabIndex = 14;
             // 
             // lboxTransactions
             // 
@@ -348,6 +333,26 @@
             this.lboxTransactions.Name = "lboxTransactions";
             this.lboxTransactions.Size = new System.Drawing.Size(549, 173);
             this.lboxTransactions.TabIndex = 7;
+            // 
+            // lblTransactions
+            // 
+            this.lblTransactions.AutoSize = true;
+            this.lblTransactions.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTransactions.Location = new System.Drawing.Point(234, 34);
+            this.lblTransactions.Name = "lblTransactions";
+            this.lblTransactions.Size = new System.Drawing.Size(135, 26);
+            this.lblTransactions.TabIndex = 6;
+            this.lblTransactions.Text = "Transactions";
+            this.lblTransactions.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblUserType
+            // 
+            this.lblUserType.AutoSize = true;
+            this.lblUserType.Location = new System.Drawing.Point(410, 25);
+            this.lblUserType.Name = "lblUserType";
+            this.lblUserType.Size = new System.Drawing.Size(89, 13);
+            this.lblUserType.TabIndex = 15;
+            this.lblUserType.Text = "Choose user type";
             // 
             // OnlineBankingForm
             // 

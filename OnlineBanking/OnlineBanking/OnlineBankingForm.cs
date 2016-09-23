@@ -18,6 +18,48 @@ namespace OnlineBanking
         public OnlineBankingForm()
         {
             InitializeComponent();
+            hidePanels();
+        }
+
+        private void hidePanels()
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control is Panel)
+                {
+                    control.Visible = false;
+                }
+            }
+        }
+
+        private void btnShowPanelOpen_Click(object sender, EventArgs e)
+        {
+            hidePanels();
+            pnlOpen.Visible = true;
+        }
+
+        private void btnShowPanelDeposit_Click(object sender, EventArgs e)
+        {
+            hidePanels();
+            pnlDeposit.Visible = true;
+        }
+
+        private void btnShowPanelWithdraw_Click(object sender, EventArgs e)
+        {
+            hidePanels();
+            pnlWithdraw.Visible = true;
+        }
+
+        private void btnShowPanelBalance_Click(object sender, EventArgs e)
+        {
+            hidePanels();
+            pnlBalance.Visible = true;
+        }
+
+        private void btnShowPanelTransactions_Click(object sender, EventArgs e)
+        {
+            hidePanels();
+            pnlTransactions.Visible = true;
         }
     }
 }
