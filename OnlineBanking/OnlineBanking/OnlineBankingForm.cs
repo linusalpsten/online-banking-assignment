@@ -57,7 +57,7 @@ namespace OnlineBanking
 
             // Disable buttons
             disableMenuButtons();
-
+            btnOpen.Click += showClientsAccounts;
         }
 
         // Controller functions
@@ -72,6 +72,14 @@ namespace OnlineBanking
             }
         }
         private void showClientsAccounts()
+        {
+            lboxAccounts.Items.Clear();
+            foreach (Account account in ((Client)lboxClients.SelectedItem).accounts)
+            {
+                lboxAccounts.Items.Add(account);
+            }
+        }
+        private void showClientsAccounts(object sender, EventArgs e)
         {
             lboxAccounts.Items.Clear();
             foreach (Account account in ((Client)lboxClients.SelectedItem).accounts)
