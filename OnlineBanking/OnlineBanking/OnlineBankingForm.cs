@@ -41,7 +41,7 @@ namespace OnlineBanking
                 // Create accounts
                 for (int i = 0; i < (clientIndex + 1); i++)
                 {
-                    client.accounts.Add(new Account() { accountNr = (i+1) });
+                    client.accounts.Add(new Account() { accountNr = (i + 1) });
                 }
 
                 // Add client to listbox
@@ -242,7 +242,7 @@ namespace OnlineBanking
                 return;
             }
 
-            ((Client)lboxClients.SelectedItem).addAccount(new Account(int.Parse(tboxOpenBalance.Text)));
+            ((Client)lboxClients.SelectedItem).addAccount(new Account(int.Parse(tboxOpenBalance.Text)) { accountNr = lboxAccounts.Items.Count + 1 });
         }
     }
 }
