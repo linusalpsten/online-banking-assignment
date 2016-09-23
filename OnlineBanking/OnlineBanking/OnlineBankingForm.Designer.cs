@@ -73,6 +73,7 @@
             this.cboxUserType.Name = "cboxUserType";
             this.cboxUserType.Size = new System.Drawing.Size(128, 21);
             this.cboxUserType.TabIndex = 0;
+            this.cboxUserType.SelectedIndexChanged += new System.EventHandler(this.cboxUserType_SelectedIndexChanged);
             // 
             // btnShowPanelOpen
             // 
@@ -140,6 +141,7 @@
             this.lboxClients.Name = "lboxClients";
             this.lboxClients.Size = new System.Drawing.Size(120, 95);
             this.lboxClients.TabIndex = 7;
+            this.lboxClients.SelectedIndexChanged += new System.EventHandler(this.lboxClients_SelectedIndexChanged);
             // 
             // lblAccountList
             // 
@@ -157,6 +159,7 @@
             this.lboxAccounts.Name = "lboxAccounts";
             this.lboxAccounts.Size = new System.Drawing.Size(120, 95);
             this.lboxAccounts.TabIndex = 9;
+            this.lboxAccounts.SelectedIndexChanged += new System.EventHandler(this.lboxAccounts_SelectedIndexChanged);
             // 
             // pnlOpen
             // 
