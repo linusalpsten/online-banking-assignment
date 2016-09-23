@@ -75,9 +75,9 @@ namespace onlineBankingLibrary
 
     public class Transaction
     {
-        public int amount { get; }
+        private int amount { get; set; }
         public DateTime dateAndTime { get; }
-        public string information { get { return string.Format("{0}: {1} {2}", dateAndTime.ToString("G"), getTransactionTypeForInfo(), amount); } }
+        public string information { get { return string.Format("{0}: {1} {2}", dateAndTime.ToString("G"), getTransactionTypeForInfo(), getTransactionAmount()); } }
         public Transaction(int amount)
         {
             this.amount = amount;
@@ -93,6 +93,15 @@ namespace onlineBankingLibrary
             {
                 return "Withdrew";
             }
+        }
+        private int getTransactionAmount()
+        {
+            if (amount < 0)
+            {
+                return amount * -1;
+            }
+
+            return amount;
         }
     }
 }
