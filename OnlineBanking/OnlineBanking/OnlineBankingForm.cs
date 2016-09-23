@@ -59,6 +59,48 @@ namespace OnlineBanking
 
         }
 
+        private void enableButtons(object sender, EventArgs e)
+        {
+            hidePanels();
+            if (cboxUserType.SelectedIndex != -1 && lboxClients.SelectedIndex != -1)
+            {
+                btnShowPanelOpen.Enabled = true;
+            }
+
+            // Must have user type
+            if (cboxUserType.SelectedIndex == -1)
+            {
+                return;
+            }
+
+            // Must have client
+            if (lboxClients.SelectedIndex == -1)
+            {
+                return;
+            }
+
+            btnShowPanelOpen.Enabled = true;
+
+            if (lboxAccounts.SelectedIndex == -1)
+            {
+                return;
+            }
+
+            switch (cboxUserType.SelectedIndex)
+            {
+                case 0: //user type is staff
+                    btnShowPanelTransactions.Enabled = true;
+                    break;
+                case 1:
+                    btnShowPanelDeposit.Enabled = true;
+                    btnShowPanelBalance.Enabled = true;
+                    btnShowPanelWithdraw.Enabled = true;
+                    break;
+                default:
+                    break;
+            }
+        }
+
         private void hidePanels()
         {
             foreach (Control control in this.Controls)
