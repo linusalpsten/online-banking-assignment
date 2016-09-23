@@ -209,27 +209,17 @@ namespace OnlineBanking
                 return;
             }
 
-            // Variables
             int amount;
             Account account;
 
             // Get deposited amount
             amount = int.Parse(tboxDepositAmount.Text);
 
-            // Amount must be a positive number
-            if (amount <= 0)
-            {
-                return;
-            }
-
             // Reference to current account
             account = (Account)lboxAccounts.SelectedItem;
 
-
-            // Add the deposit to the account balance
-            account.balance += amount;
-            // Add account transaction
-            account.transactions.Add(new Transaction(amount));
+            // Deposit amount
+            account.Deposit(amount);
 
         }
 
