@@ -31,6 +31,7 @@ namespace OnlineBanking
 
             // Set client listbox display member to the clients full name
             lboxClients.DisplayMember = "fullName";
+            lboxAccounts.DisplayMember = "displayMember";
 
             // Add accounts to each client and add the clients to the client listbox
             for (int clientIndex = 0; clientIndex < clients.Count; clientIndex++)
@@ -40,7 +41,7 @@ namespace OnlineBanking
                 // Create accounts
                 for (int i = 0; i < (clientIndex + 1); i++)
                 {
-                    client.accounts.Add(new Account());
+                    client.accounts.Add(new Account() { accountNr = (i+1) });
                 }
 
                 // Add client to listbox
