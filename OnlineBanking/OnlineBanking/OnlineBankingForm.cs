@@ -59,6 +59,20 @@ namespace OnlineBanking
             // Disable buttons
             disableMenuButtons();
             btnOpen.Click += showClientsAccounts;
+
+            // Set panel position
+            foreach (Control control in this.Controls)
+            {
+                if (control is Panel)
+                {
+                    control.Left = 233;
+                    control.Top = 88;
+                }
+            }
+
+            // Set form size
+            this.Width = 1024;
+            this.Height = 512;
         }
 
         // Controller functions
