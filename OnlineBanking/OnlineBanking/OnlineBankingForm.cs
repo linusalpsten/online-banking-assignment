@@ -29,10 +29,6 @@ namespace OnlineBanking
             clients.Add(new Client() { firstName = "Musse", lastName = "Pigg" });
             clients.Add(new Client() { firstName = "Janne", lastName = "Långben" });
 
-            // Set client listbox display member to the clients full name
-            lboxClients.DisplayMember = "fullName";
-            lboxAccounts.DisplayMember = "displayMember";
-
             // Add accounts to each client and add the clients to the client listbox
             for (int clientIndex = 0; clientIndex < clients.Count; clientIndex++)
             {
@@ -48,6 +44,10 @@ namespace OnlineBanking
                 lboxClients.Items.Add(client);
             }
 
+            // Set listbox display members
+            lboxClients.DisplayMember = "fullName";
+            lboxAccounts.DisplayMember = "displayMember";
+
             // Add user type combo box alternatives
             cboxUserType.Items.Add("Staff");    // usertypeID = 0
             cboxUserType.Items.Add("Client");   // usertypeID = 1
@@ -56,7 +56,7 @@ namespace OnlineBanking
             hidePanels();
 
             // Disable buttons
-            disableAllButtons();
+            disableMenuButtons();
 
         }
 
@@ -120,7 +120,7 @@ namespace OnlineBanking
                     break;
             }
         }
-        private void disableAllButtons()
+        private void disableMenuButtons()
         {
             foreach (Control control in this.Controls)
             {
@@ -171,7 +171,7 @@ namespace OnlineBanking
             hidePanels();
 
             // Enable the buttons based on conditions
-            disableAllButtons();
+            disableMenuButtons();
             enableButtons();
         }
 
@@ -185,7 +185,7 @@ namespace OnlineBanking
             showClientsAccounts();
 
             // Enable the buttons based on conditions
-            disableAllButtons();
+            disableMenuButtons();
             enableButtons();
         }
 
@@ -196,7 +196,7 @@ namespace OnlineBanking
             hidePanels();
 
             // Enable the buttons based on conditions
-            disableAllButtons();
+            disableMenuButtons();
             enableButtons();
         }
 
@@ -211,9 +211,20 @@ namespace OnlineBanking
             ((Account)lboxAccounts.SelectedItem).Deposit(amount);
         }
 
+        // Open new account
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            if (int.Parse(tboxOpenBalance.Text) < 1000)
+            int balance;
+
+            // Textbox content must be a number
+            if (!int.TryParse(tboxOpenBalance.Text, out balance))
+            {
+                MessageBox.Show("The account balance must be a number.");
+                tboxOpenBalance.Focus();
+                return;
+            }
+
+            if (balance < 1000)
             {
                 MessageBox.Show("The minimum amount required to open a new account is: 1000");
                 tboxOpenBalance.Focus();
@@ -223,6 +234,7 @@ namespace OnlineBanking
             ((Client)lboxClients.SelectedItem).addAccount(new Account(int.Parse(tboxOpenBalance.Text)) { accountNr = lboxAccounts.Items.Count + 1 });
         }
 
+        // Withdraw
         private void btnWithdraw_Click(object sender, EventArgs e)
         {
             int amount;
