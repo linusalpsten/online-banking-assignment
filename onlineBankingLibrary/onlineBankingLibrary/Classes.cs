@@ -22,6 +22,7 @@ namespace onlineBankingLibrary
     {
         public int accountNr { get; set; }
         public int balance { get; set; }
+        public string displayMember { get { return accountNr.ToString(); } }
         public List<Transaction> transactions = new List<Transaction>();
         public Account()
         {
