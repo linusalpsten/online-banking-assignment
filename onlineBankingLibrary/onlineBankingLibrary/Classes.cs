@@ -35,7 +35,12 @@ namespace onlineBankingLibrary
 
     public class Transaction
     {
-        public int amount { get; set; }
-        public DateTime dateAndTime = DateTime.UtcNow;
+        public int amount { get; }
+        public DateTime dateAndTime { get; }
+        public Transaction(int amount)
+        {
+            this.amount = amount;
+            dateAndTime = DateTime.UtcNow;
+        }
     }
 }
