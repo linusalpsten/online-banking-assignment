@@ -210,9 +210,20 @@ namespace OnlineBanking
             ((Account)lboxAccounts.SelectedItem).Deposit(amount);
         }
 
+        // Open new account
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            if (int.Parse(tboxOpenBalance.Text) < 1000)
+            int balance;
+
+            // Textbox content must be a number
+            if (!int.TryParse(tboxOpenBalance.Text, out balance))
+            {
+                MessageBox.Show("The account balance must be a number.");
+                tboxOpenBalance.Focus();
+                return;
+            }
+
+            if (balance < 1000)
             {
                 MessageBox.Show("The minimum amount required to open a new account is: 1000");
                 tboxOpenBalance.Focus();
