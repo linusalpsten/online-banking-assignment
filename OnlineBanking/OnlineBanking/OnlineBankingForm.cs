@@ -182,6 +182,7 @@ namespace OnlineBanking
         {
             hidePanels();
             pnlTransactions.Visible = true;
+            showAccountTransactions();
         }
 
         // User type selected
