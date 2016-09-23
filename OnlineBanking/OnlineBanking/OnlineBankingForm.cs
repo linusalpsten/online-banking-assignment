@@ -209,6 +209,7 @@ namespace OnlineBanking
                 return;
             }
             ((Account)lboxAccounts.SelectedItem).Deposit(amount);
+            tboxDepositAmount.Text = string.Empty;
         }
 
         // Open new account
@@ -232,6 +233,7 @@ namespace OnlineBanking
             }
 
             ((Client)lboxClients.SelectedItem).addAccount(new Account(int.Parse(tboxOpenBalance.Text)) { accountNr = lboxAccounts.Items.Count + 1 });
+            tboxOpenBalance.Text = string.Empty;
         }
 
         // Withdraw
@@ -243,6 +245,7 @@ namespace OnlineBanking
                 return;
             }
             ((Account)lboxAccounts.SelectedItem).Withdraw(amount);
+            tboxWithdrawAmount.Text = string.Empty;
         }
     }
 }
