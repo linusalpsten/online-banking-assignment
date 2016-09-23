@@ -77,10 +77,22 @@ namespace onlineBankingLibrary
     {
         public int amount { get; }
         public DateTime dateAndTime { get; }
+        public string information { get { return string.Format("{0}: {1} {2}", dateAndTime.ToString("G"), getTransactionTypeForInfo(), amount); } }
         public Transaction(int amount)
         {
             this.amount = amount;
             dateAndTime = DateTime.UtcNow;
+        }
+        private string getTransactionTypeForInfo()
+        {
+            if (amount > 0)
+            {
+                return "Deposited";
+            }
+            else
+            {
+                return "Withdrew";
+            }
         }
     }
 }
