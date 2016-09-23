@@ -202,25 +202,12 @@ namespace OnlineBanking
         // Deposit
         private void btnDeposit_Click(object sender, EventArgs e)
         {
-            // Textbox content must be a number
-            bool isNumInTextbox = getIsNumberInTextbox(tboxDepositAmount);
-            if (!isNumInTextbox)
+            int amount;
+            if (!int.TryParse(tboxDepositAmount.Text, out amount))
             {
                 return;
             }
-
-            int amount;
-            Account account;
-
-            // Get deposited amount
-            amount = int.Parse(tboxDepositAmount.Text);
-
-            // Reference to current account
-            account = (Account)lboxAccounts.SelectedItem;
-
-            // Deposit amount
-            account.Deposit(amount);
-
+            ((Account)lboxAccounts.SelectedItem).Deposit(amount);
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
@@ -233,6 +220,16 @@ namespace OnlineBanking
             }
 
             ((Client)lboxClients.SelectedItem).addAccount(new Account(int.Parse(tboxOpenBalance.Text)) { accountNr = lboxAccounts.Items.Count + 1 });
+        }
+
+        private void btnWithdraw_Click(object sender, EventArgs e)
+        {
+            int amount;
+            if (!int.TryParse(tboxWithdrawAmount.Text, out amount))
+            {
+                return;
+            }
+            ((Account)lboxAccounts.SelectedItem).Withdraw(amount);
         }
     }
 }
