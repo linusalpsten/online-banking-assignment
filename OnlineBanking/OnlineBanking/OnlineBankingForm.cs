@@ -87,6 +87,18 @@ namespace OnlineBanking
                 lboxAccounts.Items.Add(account);
             }
         }
+        private void showAccountTransactions()
+        {
+
+            // Clear listbox
+            lboxTransactions.Items.Clear();
+
+            // Add account transactions to listbox
+            foreach (Transaction transaction in ((Account)lboxAccounts.SelectedItem).transactions)
+            {
+                lboxTransactions.Items.Add(transaction);
+            }
+        }
         private void enableButtons()
         {
             hidePanels();
@@ -206,6 +218,9 @@ namespace OnlineBanking
             // Enable the buttons based on conditions
             disableMenuButtons();
             enableButtons();
+
+            //
+            showAccountTransactions();
         }
 
         // Deposit
