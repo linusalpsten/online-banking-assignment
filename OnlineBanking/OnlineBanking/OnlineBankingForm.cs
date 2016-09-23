@@ -47,6 +47,7 @@ namespace OnlineBanking
             // Set listbox display members
             lboxClients.DisplayMember = "fullName";
             lboxAccounts.DisplayMember = "displayMember";
+            lboxTransactions.DisplayMember = "information";
 
             // Add user type combo box alternatives
             cboxUserType.Items.Add("Staff");    // usertypeID = 0
