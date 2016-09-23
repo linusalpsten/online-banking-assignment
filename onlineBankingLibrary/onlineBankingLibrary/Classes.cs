@@ -21,7 +21,7 @@ namespace onlineBankingLibrary
     public class Account
     {
         public int accountNr { get; set; }
-        public int balance { get; set; }
+        private int balance { get; set; }
         public string displayMember { get { return string.Format("Account: {0}", accountNr.ToString()); } }
         public List<Transaction> transactions = new List<Transaction>();
         public Account()
@@ -31,6 +31,41 @@ namespace onlineBankingLibrary
         public Account(int balance)
         {
             this.balance = balance;
+        }
+        public void Deposit(int amount)
+        {
+            // Amount must be a positive number
+            if (amount < 0)
+            {
+                return;
+            }
+
+            // Deposit amount to account balance
+            balance += amount;
+
+            // Add new transaction
+            transactions.Add(new Transaction(amount));
+        }
+        public void Withdraw(int amount)
+        {
+            // Amount must be a positive number
+            if (amount < 0)
+            {
+                return;
+            }
+
+            // Deny withdrawal if balance becomes less than 500
+            if (balance - amount < 500)
+            {
+                return;
+            }
+
+            // Withdraw amount from account balance
+            balance -= amount;
+
+            // Add new transaction
+            transactions.Add(new Transaction(-amount));
+
         }
     }
 
