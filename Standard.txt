@@ -1,0 +1,25 @@
+Naming Standard:
+Labels: lbl + Namn
+Buttons: btn + Namn
+Panels: pnl + Namn
+Listboxes: lbox + Namn
+Combobox: cbox + Namn
+
+Classes: Börja stor bokstav
+Variabler och Funktioner: Börja liten bokstav
+
+Variabler:
+Substantiv (med s om plural)
+person (singular)
+persons (plural)
+
+Funktioner:
+Beskrivande för funktionen, inkl. verb
+Funktioner ska bara fylla sin beskrivda funktion enligt sin namngivning
+getFullName()
+
+Commit desc.:
+Nytt innehåll: Added class Client
+Ändra innehåll: Updated class Client
+Borttaget innehåll: Removed class Client
+Issue fixes: Fixed issue #3

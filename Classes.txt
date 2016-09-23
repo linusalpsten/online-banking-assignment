@@ -1,0 +1,17 @@
+Kunder
+ - För- och efternamn
+ //- Personnr
+ - Lista på konto
+
+Konto
+ - Kontonr (UNIKT): index i kundens 
+ - Saldo (1000 default)
+ - Lista på transaktioner
+ //- Valuta
+
+ * ctor saldo = default eller angett värde
+
+Transaktioner
+ - Transaktionstyp
+ - Datum (.NET klass DateTime)
+ - Belopp (+ / -)
