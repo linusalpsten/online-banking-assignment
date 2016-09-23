@@ -46,7 +46,7 @@ namespace OnlineBanking
 
             // Set listbox display members
             lboxClients.DisplayMember = "fullName";
-            lboxAccounts.DisplayMember = "displayMember";
+            lboxAccounts.DisplayMember = "information";
             lboxTransactions.DisplayMember = "information";
 
             // Add user type combo box alternatives
@@ -54,11 +54,10 @@ namespace OnlineBanking
             cboxUserType.Items.Add("Client");   // usertypeID = 1
 
             // Hide panels
-            hidePanels();
+            hideAllPanels();
 
             // Disable buttons
             disableMenuButtons();
-            btnOpen.Click += showClientsAccounts;
 
             // Set panel position
             foreach (Control control in this.Controls)
@@ -76,7 +75,11 @@ namespace OnlineBanking
         }
 
         // Controller functions
-        private void hidePanels()
+
+        /// <summary>
+        /// Hide all panels belonging to the form
+        /// </summary>
+        private void hideAllPanels()
         {
             foreach (Control control in this.Controls)
             {
@@ -86,24 +89,36 @@ namespace OnlineBanking
                 }
             }
         }
-        private void showClientsAccounts()
+        /// <summary>
+        /// Shows the accounts of the selected client in the account listbox
+        /// </summary>
+        private void showClientAccounts()
         {
+            // Must have selected a client
+            if (lboxClients.SelectedItem == null)
+            {
+                return;
+            }
+
+            // Clear account listbox
             lboxAccounts.Items.Clear();
+            
+            // Add the clients accounts to account listbox
             foreach (Account account in ((Client)lboxClients.SelectedItem).accounts)
             {
                 lboxAccounts.Items.Add(account);
             }
         }
-        private void showClientsAccounts(object sender, EventArgs e)
-        {
-            lboxAccounts.Items.Clear();
-            foreach (Account account in ((Client)lboxClients.SelectedItem).accounts)
-            {
-                lboxAccounts.Items.Add(account);
-            }
-        }
+        /// <summary>
+        /// Shows the transactions of the selected account in the transaction listbox
+        /// </summary>
         private void showAccountTransactions()
         {
+            // Must have selected an account
+            if (lboxAccounts.SelectedItem == null)
+            {
+                return;
+            }
 
             // Clear listbox
             lboxTransactions.Items.Clear();
@@ -114,47 +129,41 @@ namespace OnlineBanking
                 lboxTransactions.Items.Add(transaction);
             }
         }
+        /// <summary>
+        /// Enables the menu buttons based on conditions
+        /// </summary>
         private void enableButtons()
         {
-            hidePanels();
+            // Must have selected a user type and a client
             if (cboxUserType.SelectedIndex != -1 && lboxClients.SelectedIndex != -1)
             {
                 btnShowPanelOpen.Enabled = true;
             }
 
-            // Must have user type
-            if (cboxUserType.SelectedIndex == -1)
+            // Must have selected an account
+            if (lboxAccounts.SelectedIndex != -1)
             {
-                return;
+                switch (cboxUserType.SelectedIndex)
+                {
+                    case 0: 
+                        // Staff
+                        btnShowPanelTransactions.Enabled = true;
+                        break;
+                    case 1:
+                        // Client
+                        btnShowPanelDeposit.Enabled = true;
+                        btnShowPanelBalance.Enabled = true;
+                        btnShowPanelWithdraw.Enabled = true;
+                        break;
+                    default:
+                        break;
+                }
             }
 
-            // Must have client
-            if (lboxClients.SelectedIndex == -1)
-            {
-                return;
-            }
-
-            btnShowPanelOpen.Enabled = true;
-
-            if (lboxAccounts.SelectedIndex == -1)
-            {
-                return;
-            }
-
-            switch (cboxUserType.SelectedIndex)
-            {
-                case 0: //user type is staff
-                    btnShowPanelTransactions.Enabled = true;
-                    break;
-                case 1:
-                    btnShowPanelDeposit.Enabled = true;
-                    btnShowPanelBalance.Enabled = true;
-                    btnShowPanelWithdraw.Enabled = true;
-                    break;
-                default:
-                    break;
-            }
         }
+        /// <summary>
+        /// Disables all menu buttons
+        /// </summary>
         private void disableMenuButtons()
         {
             foreach (Control control in this.Controls)
@@ -165,46 +174,47 @@ namespace OnlineBanking
                 }
             }
         }
-        private bool getIsNumberInTextbox(TextBox tbox)
+        /// <summary>
+        /// Show the panel and hide the others
+        /// </summary>
+        /// <param name="panel">The panel you wish to show</param>
+        private void showPanel(Panel panel)
         {
-            int num;
-            return int.TryParse(tbox.Text, out num);
+            hideAllPanels();
+            panel.Visible = true;
         }
 
         // Show panel button clicked
         private void btnShowPanelOpen_Click(object sender, EventArgs e)
         {
-            hidePanels();
-            pnlOpen.Visible = true;
+            showPanel(pnlOpen);
         }
         private void btnShowPanelDeposit_Click(object sender, EventArgs e)
         {
-            hidePanels();
-            pnlDeposit.Visible = true;
+            showPanel(pnlDeposit);
         }
         private void btnShowPanelWithdraw_Click(object sender, EventArgs e)
         {
-            hidePanels();
-            pnlWithdraw.Visible = true;
+            showPanel(pnlWithdraw);
         }
         private void btnShowPanelBalance_Click(object sender, EventArgs e)
         {
-            hidePanels();
-            pnlBalance.Visible = true;
+            showPanel(pnlBalance);
+
+            // Set balance number to account balance
             lblBalanceNum.Text = ((Account)lboxAccounts.SelectedItem).getBalance().ToString();
         }
         private void btnShowPanelTransactions_Click(object sender, EventArgs e)
         {
-            hidePanels();
-            pnlTransactions.Visible = true;
+            showPanel(pnlTransactions);
             showAccountTransactions();
         }
 
         // User type selected
         private void cboxUserType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //
-            hidePanels();
+            // Hide all panels
+            hideAllPanels();
 
             // Enable the buttons based on conditions
             disableMenuButtons();
@@ -214,11 +224,11 @@ namespace OnlineBanking
         // Client selected
         private void lboxClients_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //
-            hidePanels();
+            // Hide all panels
+            hideAllPanels();
 
             // Show accounts belonging to selected client
-            showClientsAccounts();
+            showClientAccounts();
 
             // Enable the buttons based on conditions
             disableMenuButtons();
@@ -228,26 +238,29 @@ namespace OnlineBanking
         // Account selected
         private void lboxAccounts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //
-            hidePanels();
+            // Hide all panels
+            hideAllPanels();
 
             // Enable the buttons based on conditions
             disableMenuButtons();
             enableButtons();
-
-            //
-            showAccountTransactions();
         }
 
         // Deposit
         private void btnDeposit_Click(object sender, EventArgs e)
         {
             int amount;
+
+            // Amount must be a number
             if (!int.TryParse(tboxDepositAmount.Text, out amount))
             {
                 return;
             }
-            ((Account)lboxAccounts.SelectedItem).Deposit(amount);
+
+            // Deposit amount
+            ((Account)lboxAccounts.SelectedItem).deposit(amount);
+
+            // Clear textboxes
             tboxDepositAmount.Text = string.Empty;
         }
 
@@ -264,6 +277,7 @@ namespace OnlineBanking
                 return;
             }
 
+            // Balance must be 1000 or above
             if (balance < 1000)
             {
                 MessageBox.Show("The minimum amount required to open a new account is: 1000");
@@ -271,7 +285,13 @@ namespace OnlineBanking
                 return;
             }
 
+            // Add to account list
             ((Client)lboxClients.SelectedItem).addAccount(new Account(int.Parse(tboxOpenBalance.Text)) { accountNr = lboxAccounts.Items.Count + 1 });
+
+            // Refresh client listbox
+            showClientAccounts();
+
+            // Clear textbox
             tboxOpenBalance.Text = string.Empty;
         }
 
@@ -279,11 +299,17 @@ namespace OnlineBanking
         private void btnWithdraw_Click(object sender, EventArgs e)
         {
             int amount;
+
+            // Amount must be a number
             if (!int.TryParse(tboxWithdrawAmount.Text, out amount))
             {
                 return;
             }
-            ((Account)lboxAccounts.SelectedItem).Withdraw(amount);
+
+            // Withdraw amount
+            ((Account)lboxAccounts.SelectedItem).withdraw(amount);
+
+            // Clear textboxes
             tboxWithdrawAmount.Text = string.Empty;
         }
     }

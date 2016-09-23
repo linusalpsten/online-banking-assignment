@@ -11,7 +11,9 @@ namespace onlineBankingLibrary
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string fullName { get { return string.Format("{0} {1}", firstName, lastName); } }
+
         public List<Account> accounts = new List<Account>();
+
         public void addAccount(Account account)
         {
             accounts.Add(account);
@@ -22,21 +24,24 @@ namespace onlineBankingLibrary
     {
         public int accountNr { get; set; }
         private int balance { get; set; }
-        public string displayMember { get { return string.Format("Account: {0}", accountNr.ToString()); } }
+        public string information { get { return string.Format("Account: {0}", accountNr.ToString()); } }
         public List<Transaction> transactions = new List<Transaction>();
+
         public Account()
         {
             balance = 1000;
-        }
-        public int getBalance()
-        {
-            return balance;
         }
         public Account(int balance)
         {
             this.balance = balance;
         }
-        public void Deposit(int amount)
+
+        public int getBalance()
+        {
+            return balance;
+        }
+
+        public void deposit(int amount)
         {
             // Amount must be a positive number
             if (amount < 0)
@@ -50,7 +55,7 @@ namespace onlineBankingLibrary
             // Add new transaction
             transactions.Add(new Transaction(amount));
         }
-        public void Withdraw(int amount)
+        public void withdraw(int amount)
         {
             // Amount must be a positive number
             if (amount < 0)
