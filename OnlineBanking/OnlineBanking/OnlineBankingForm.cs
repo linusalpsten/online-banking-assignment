@@ -18,7 +18,6 @@ namespace OnlineBanking
         public OnlineBankingForm()
         {
             InitializeComponent();
-            hidePanels();
         }
 
         private void hidePanels()
@@ -28,6 +27,26 @@ namespace OnlineBanking
                 if (control is Panel)
                 {
                     control.Visible = false;
+                }
+            }
+        }
+
+        private void showClientsAccounts(object sender, EventArgs e)
+        {
+            lboxAccounts.Items.Clear();
+            foreach (Account account in ((Client)lboxClients.SelectedItem).accounts)
+            {
+                lboxAccounts.Items.Add(account);
+            }
+        }
+
+        private void disableButtons()
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control is Button)
+                {
+                    control.Enabled = false;
                 }
             }
         }
