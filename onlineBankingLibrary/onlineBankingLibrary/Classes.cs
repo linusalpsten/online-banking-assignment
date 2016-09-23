@@ -28,6 +28,10 @@ namespace onlineBankingLibrary
         {
             balance = 1000;
         }
+        public int getBalance()
+        {
+            return balance;
+        }
         public Account(int balance)
         {
             this.balance = balance;

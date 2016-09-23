@@ -156,6 +156,7 @@ namespace OnlineBanking
         {
             hidePanels();
             pnlBalance.Visible = true;
+            lblBalanceNum.Text = ((Account)lboxAccounts.SelectedItem).getBalance().ToString();
         }
         private void btnShowPanelTransactions_Click(object sender, EventArgs e)
         {
