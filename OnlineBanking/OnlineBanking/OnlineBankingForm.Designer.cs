@@ -193,6 +193,7 @@
             this.btnOpen.TabIndex = 0;
             this.btnOpen.Text = "Open Account";
             this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
             // pnlDeposit
             // 
