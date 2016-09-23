@@ -52,8 +52,10 @@ namespace OnlineBanking
             cboxUserType.Items.Add("Client");   // usertypeID = 1
 
             // Hide panels
+            hidePanels();
 
             // Disable buttons
+            disableButtons();
 
         }
 
